@@ -1,0 +1,70 @@
+Mongo command from Github.com
+
+Mongo Database commands
+
+1)  Show database
+	-> show dbs;
+
+2) use or create database
+	-> use database_name
+
+3) to check current databse
+	-> db
+
+4) to create new collection (row)
+	->db.createCollection('collection_name')
+
+5) to see all collections
+	-> show collections
+
+6) to drop database
+	-> db.dropDatabase()
+
+7) to drop collections
+	-> db.coll_name.drop()
+
+8) to insert one row into colelctions
+	db.FirstCollection.insert(
+	{'name': 'hello', 'address': 'hello', 'contactno': '54454646465', 'dob':'100516161'   })
+
+9) db.Collection_name.insertMany(
+       [
+          { 'name': 'gaurav', 'address': 'faridabad', 'contactno': '+6464469468', 'dob':'100516161'}, 
+             {'name': 'Amit', 'address': 'delhi', 'contactno': '54454646465', 'dob':'100516161' }
+                ]
+ 	) 
+
+10) to see all the rows in the collections
+	 db.Collection_name.find()
+
+11) to see all rows in pretty manner
+	db.Collection_name.find().pretty();
+
+12) to find any data
+	-> db.Collc_name.find({ fild_name: 'object_name'})
+	eg-> db.FirstCollection.find({name: 'Gaurav'})
+
+13) to find limited  
+	-> db.Collc_name.find({ fild_name: 'object_name'})
+	eg-> db.FirstCollection.find().limit(2)
+
+14) to count the number of rows
+	-> db.FirstColelction.find().count()
+
+
+15) to FInd the first row matching in the collection--- this will return the First encountered row and stop the execution
+	-> db.FirstCollection.findOne({name:'gaurav'})
+
+16) to update the row
+
+MongoInvalidArgumentError: Update document requires atomic operators --> will occur if, 
+	1) -> db.FirstCollection.update(
+			{ _id: ObjectId("634d4c39409579430e83846e")},
+			{$set:{ name:'byebye', address:'buebye', newField:'newField'}})
+
+	#we can add new fields if we wants to add, like in this i have added ->newField:'newField'
+
+	2) db.FirstCollection.updateMany(
+		{name:'Amit'},{$set:{ name:'Shubham', address:'Sector49', newField:'newField'}})
+		
+		# updateMany will udpate all the rows matching the condition
